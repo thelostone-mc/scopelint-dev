@@ -79,6 +79,7 @@ impl InvalidItem {
 }
 
 /// Categories of file kinds found in forge projects.
+///
 /// Two additional file kinds are not included here: `ScriptHelpers` and `TestHelpers`. These are
 /// not currently used in any checks so they are excluded for now.
 pub enum FileKind {
@@ -164,7 +165,7 @@ pub fn offset_to_line(content: &str, start: usize) -> usize {
             line_counter += 1;
         }
         if offset > start {
-            return line_counter
+            return line_counter;
         }
     }
 

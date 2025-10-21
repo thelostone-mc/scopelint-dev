@@ -13,7 +13,7 @@ fn is_matching_file(file: &Path) -> bool {
 /// Validates that internal and private function names are prefixed with an underscore.
 pub fn validate(parsed: &Parsed) -> Vec<InvalidItem> {
     if !is_matching_file(&parsed.file) {
-        return Vec::new()
+        return Vec::new();
     }
 
     let mut invalid_items: Vec<InvalidItem> = Vec::new();
@@ -24,9 +24,8 @@ pub fn validate(parsed: &Parsed) -> Vec<InvalidItem> {
                     invalid_items.push(invalid_item);
                 }
             }
-            SourceUnitPart::ContractDefinition(c) => match c.ty {
-                ContractTy::Library(_) => continue,
-                _ => {
+            SourceUnitPart::ContractDefinition(c) => {
+                if !matches!(c.ty, ContractTy::Library(_)) {
                     for el in &c.parts {
                         if let ContractPart::FunctionDefinition(f) = el {
                             if let Some(invalid_item) = validate_name(parsed, f) {
@@ -35,7 +34,7 @@ pub fn validate(parsed: &Parsed) -> Vec<InvalidItem> {
                         }
                     }
                 }
-            },
+            }
             _ => (),
         }
     }

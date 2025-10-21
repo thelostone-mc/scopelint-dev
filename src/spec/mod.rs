@@ -75,7 +75,7 @@ impl ParsedContract {
     fn contract_name(&self) -> String {
         self.contract
             .as_ref()
-            .map_or("FreeFunctions".to_string(), |c| c.name.as_ref().unwrap().name.clone())
+            .map_or_else(|| "FreeFunctions".to_string(), |c| c.name.as_ref().unwrap().name.clone())
     }
 
     fn contract_name_from_file(&self) -> String {
@@ -121,7 +121,7 @@ impl ContractSpecification {
                 .iter()
                 .find(|tc| {
                     // Find the test contract with the same name
-                    tc.contract_name().to_ascii_lowercase() == src_fn.name().to_ascii_lowercase()
+                    tc.contract_name().eq_ignore_ascii_case(&src_fn.name())
                 })
                 .map_or_else(
                     // If there's no matching test contract, print the name of the source function
@@ -138,7 +138,7 @@ impl ContractSpecification {
                             let is_test_fn =
                                 f.is_public_or_external() && f.name().starts_with("test");
                             if !is_test_fn {
-                                continue
+                                continue;
                             }
 
                             let test_fn_name_prefix =
@@ -202,13 +202,13 @@ fn get_contracts_for_dir<P: AsRef<Path>>(dir: P, extension: &str) -> Vec<ParsedC
             Ok(dent) => dent,
             Err(err) => {
                 eprintln!("{err}");
-                continue
+                continue;
             }
         };
 
         let file = dent.path();
         if !dent.file_type().is_file() || !dent.path().to_str().unwrap().ends_with(extension) {
-            continue
+            continue;
         }
 
         let new_contracts = parse_contracts(file);
@@ -230,7 +230,7 @@ fn parse_contracts(file: &Path) -> Vec<ParsedContract> {
             }
             SourceUnitPart::ContractDefinition(c) => {
                 if let ContractTy::Interface(_) = c.ty {
-                    continue
+                    continue;
                 }
 
                 contracts.push(ParsedContract::new(file.to_path_buf(), Some(*c.clone())));

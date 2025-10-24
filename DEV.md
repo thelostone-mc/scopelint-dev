@@ -156,3 +156,32 @@ The project uses GitHub Actions for continuous integration:
 #### Formatting Issues
 - Always run `cargo fmt` before committing
 - The project uses nightly Rust features, ensure you're on nightly toolchain
+
+## Development Workflow
+
+**Command Summary:**
+- `scopelint-dev` - Local development version (debug build)
+- `scopelint-beta` - Beta release version (release build with -beta suffix)
+- `scopelint` - Production version (from crates.io)
+
+### Local Development
+```bash
+# Build and install from current source
+./scripts/install-dev.sh
+
+# Test in your projects
+cd ~/my-solidity-project
+scopelint-dev --help
+```
+
+### Beta Release
+```bash
+# Create beta release
+./scripts/create-beta.sh 1.0.0
+
+# Install beta for testing
+./scripts/install-beta.sh v1.0.0-beta
+
+# Test beta
+scopelint-beta --version
+```

@@ -33,9 +33,9 @@ contract Counter {
     keccak256(abi.encode(PERMIT_TYPEHASH, owner, spender, value));
   }
 
-  // Invalid event - should be prefixed with "Counter_"
-  event InvalidEvent(uint256 value);
-  event AnotherInvalidEvent();
+  // Invalid error - should be prefixed with "Counter_"
+  error InvalidError(uint256 value);
+  error AnotherInvalidError();
 }
 
 // scopelint: this directive is invalid

@@ -28,8 +28,8 @@ pub enum ValidatorKind {
     Directive,
     /// A variable naming convention.
     Variable,
-    /// An event definition.
-    Event,
+    /// An error definition.
+    Error,
     /// An EIP712 typehash validation issue.
     Eip712,
 }
@@ -88,8 +88,8 @@ impl InvalidItem {
                     self.file, self.line, self.text
                 )
             }
-            ValidatorKind::Event => {
-                format!("Invalid event name in {} on line {}: {}", self.file, self.line, self.text)
+            ValidatorKind::Error => {
+                format!("Invalid error name in {} on line {}: {}", self.file, self.line, self.text)
             }
             ValidatorKind::Eip712 => {
                 format!("Invalid EIP712 typehash in {}: {}", self.file, self.text)

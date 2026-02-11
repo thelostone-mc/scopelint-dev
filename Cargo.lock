@@ -220,6 +220,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a81dae078cea95a014a339291cec439d2f232ebe854a9d672b796c6afafa9b7"
 
 [[package]]
+name = "dev-scopelint"
+version = "0.0.1"
+dependencies = [
+ "clap",
+ "colored",
+ "globset",
+ "itertools 0.11.0",
+ "regex",
+ "solang-parser",
+ "taplo",
+ "toml",
+ "walkdir",
+]
+
+[[package]]
 name = "diff"
 version = "0.1.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -781,21 +796,6 @@ name = "scopeguard"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
-
-[[package]]
-name = "scopelint"
-version = "0.0.21"
-dependencies = [
- "clap",
- "colored",
- "globset",
- "itertools 0.11.0",
- "regex",
- "solang-parser",
- "taplo",
- "toml",
- "walkdir",
-]
 
 [[package]]
 name = "serde"

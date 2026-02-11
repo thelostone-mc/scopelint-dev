@@ -9,7 +9,7 @@ use std::{
 fn run_scopelint(test_folder: &str) -> Output {
     let cwd = env::current_dir().unwrap();
     let project_path = cwd.join("tests").join(test_folder);
-    let binary_path = cwd.join("target/debug/scopelint");
+    let binary_path = cwd.join("target/debug/dev-scopelint");
 
     Command::new(binary_path)
         .current_dir(project_path)
@@ -21,7 +21,7 @@ fn run_scopelint(test_folder: &str) -> Output {
 fn run_scopelint_with_flag(test_folder: &str, flag: &str) -> Output {
     let cwd = env::current_dir().unwrap();
     let project_path = cwd.join("tests").join(test_folder);
-    let binary_path = cwd.join("target/debug/scopelint");
+    let binary_path = cwd.join("target/debug/dev-scopelint");
 
     Command::new(binary_path)
         .current_dir(project_path)

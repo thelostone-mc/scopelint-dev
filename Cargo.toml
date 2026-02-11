@@ -1,20 +1,23 @@
 [package]
-  categories = ["development-tools", "development-tools::linters"]
+  categories = ["development-tools"]
   description = "An opinionated formatting and linting tool for foundry projects"
   edition = "2021"
   include = ["/src"]
   keywords = ["foundry", "linting", "formatting"]
   license = "MIT"
-  name = "scopelint"
-  repository = "https://github.com/ScopeLift/scopelint"
-  version = "0.0.21"
+  name = "dev-scopelint"
+  readme = "README.md"
+  repository = "https://github.com/thelostone-mc/scopelint-dev"
+  homepage = "https://github.com/thelostone-mc/scopelint-dev"
+  version = "0.0.1"
 
 [dependencies]
   clap = { version = "4.4.2", features = ["derive"] }
   colored = "2.0.0"
+  globset = "0.4"
   itertools = "0.11.0"
-  once_cell = "1.16.0"
   regex = "1.6.0"
   solang-parser = "0.3.2"
   taplo = "0.13.0"
+  toml = "0.8"
   walkdir = "2.3.2"

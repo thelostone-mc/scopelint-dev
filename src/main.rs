@@ -3,13 +3,13 @@
 #![warn(clippy::all, clippy::pedantic, clippy::cargo, clippy::nursery)]
 #![allow(clippy::multiple_crate_versions)]
 use clap::Parser;
-use scopelint::config::Opts;
+use dev_scopelint::config::Opts;
 use std::process;
 
 fn main() {
     let opts = Opts::parse();
 
-    if let Err(_err) = scopelint::run(&opts) {
+    if let Err(_err) = dev_scopelint::run(&opts) {
         // All warnings/errors have already been logged.
         process::exit(1);
     }

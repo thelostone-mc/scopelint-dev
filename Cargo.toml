@@ -9,7 +9,7 @@
   readme = "README.md"
   repository = "https://github.com/thelostone-mc/scopelint-dev"
   homepage = "https://github.com/thelostone-mc/scopelint-dev"
-  version = "0.0.1"
+  version = "1.0.0"
 
 [dependencies]
   clap = { version = "4.4.2", features = ["derive"] }
